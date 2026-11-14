@@ -69,6 +69,9 @@ h1{text-wrap:balance}
 @keyframes spin{0%{transform:rotateY(0) rotateX(8deg)}50%{transform:rotateY(180deg) rotateX(-8deg)}100%{transform:rotateY(360deg) rotateX(8deg)}}
 .shadow{position:absolute;bottom:0;width:120px;height:14px;border-radius:50%;background:rgba(0,0,0,.6);filter:blur(8px)}
 @media (prefers-reduced-motion:reduce){.coin{animation:none}}
+#valve3d{position:absolute;left:50%;top:50%;width:280px;height:280px;transform:translate(-50%,-52%);opacity:0;transition:opacity .6s ease;pointer-events:none}
+.stage.has3d #valve3d{opacity:1}
+.stage.has3d .coin{opacity:0;transition:opacity .4s}
 .hero h1{font-size:clamp(42px,12.4vw,64px);margin:18px 0 14px}
 .hero p{font-size:19px;color:#D9DCE2;max-width:30ch;margin-bottom:24px}
 .hero .link{margin-top:10px}
@@ -208,6 +211,7 @@ footer summary{font-size:15px;font-weight:700;padding:12px 0;min-height:44px}
 <header class="hero">
   <div class="wrap">
     <div class="stage" role="img" aria-label="הלוגו של שקט בצנרת">
+      <canvas id="valve3d" data-src="models/valve.glb" aria-hidden="true"></canvas>
       <div class="coin" id="coin"><div class="face front"></div><div class="face back"></div></div>
       <div class="shadow"></div>
     </div>
@@ -421,5 +425,6 @@ try{new IntersectionObserver(function(e){document.getElementById('sticky').class
   addEventListener('hashchange',function(){set(location.hash==='#pro'?'pro':'home',false);});
 })();
 </script>
+<script type="module" src="js/valve.js"></script>
 </body>
 </html>
